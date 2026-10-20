@@ -1,15 +1,19 @@
-package com.example.gerenciadordecampeonato.model;
+package com.example.gerenciadordecampeonato.entity;
+import lombok.Getter;
+import lombok.Setter;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name= "Jogo")
+@Getter
+@Setter
+@Table(name= "jogo")
 public class Jogo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_jogo;
+    private Long id_jogo;
 
     @ManyToOne
     @JoinColumn(name = "id_campeonato")

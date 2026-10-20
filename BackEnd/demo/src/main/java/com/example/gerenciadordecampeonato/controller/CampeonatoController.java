@@ -1,6 +1,6 @@
 package com.example.gerenciadordecampeonato.controller;
 
-import com.example.gerenciadordecampeonato.model.Campeonato;
+import com.example.gerenciadordecampeonato.entity.Campeonato;
 import com.example.gerenciadordecampeonato.repository.CampeonatoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
