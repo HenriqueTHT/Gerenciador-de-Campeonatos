@@ -31,4 +31,29 @@ public class CampeonatoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PutMapping ("/{id}")
+    public ResponseEntity<Campeonato> atualizar(@PathVariable Long id, @RequestBody Campeonato dadosAtualizados){
+        return repository.findById(id).map(campeonato ->{
+            campeonato.setNomeCampeonato(dadosAtualizados.getNomeCampeonato());
+            campeonato.setDescricao(dadosAtualizados.getDescricao());
+            campeonato.setModalidade(dadosAtualizados.getModalidade());
+            campeonato.setDataInicio(dadosAtualizados.getDataInicio());
+            campeonato.setDataFim(dadosAtualizados.getDataFim());
+
+            Campeonato atualizado = repository.save(campeonato);
+            return ResponseEntity.ok(atualizado);
+
+        }).orElse(ResponseEntity.notFound().build());
+    }
+
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
 }
